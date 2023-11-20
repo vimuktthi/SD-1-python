@@ -93,7 +93,8 @@ while flag:  # nested while loops for get inputs repeatedly
                 print("Integer required")
         while True:
             try:
-                fail = int(input("Please enter your credits as fail:"))  # p,d & f are the variables for 3 inputs
+                fail = int(input("Please enter your credits as fail:"))  # pAss,defer & fail are the variables for 3
+                # inputs
                 if 0 <= fail <= 120 and fail % 20 == 0:
                     break
                 else:
@@ -105,7 +106,7 @@ while flag:  # nested while loops for get inputs repeatedly
         if total >= 120 and pAss % 20 == 0 and defer % 20 == 0 and fail % 20 == 0 and \
                 0 <= pAss <= 120 and 0 <= defer <= 120 and 0 <= fail <= 120:
             values.extend(variables)  # checking again,because after enter invalid values those values will store in
-            # p,d,f . then after checking, those values will store in 'values' list
+            # pAss,defer,fail . then after checking, those values will store in 'values' list
         if total == 120:
             break  # programme will run till total equal to 120
         else:  # inputs repeatedly till this condition becomes true
