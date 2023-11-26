@@ -62,38 +62,28 @@ module_trailer = 0
 module_retriever = 0
 outcomes = []
 values = []
+
+
+def get_input(fail_defer_pass):
+    while True:
+        try:
+            input_data = int(input(fail_defer_pass))
+            if 120 >= input_data >= 0 == input_data % 20:
+                return input_data
+            else:
+                print("Out of range")
+        except ValueError:
+            print("Integer required")
+
+
 boolean = True
 print("Part 1")
-
 while boolean:
     while boolean:
-        while True:
-            try:
-                pAss = int(input("Please enter your credits as pass:"))
-                if 120 >= pAss >= 0 == pAss % 20:
-                    break
-                else:
-                    print("Out of range")
-            except ValueError:
-                print("Integer required")
-        while True:
-            try:
-                defer = int(input("Please enter your credits as defer:"))
-                if 120 >= defer >= 0 == defer % 20:
-                    break
-                else:
-                    print("Out of range")
-            except ValueError:
-                print("Integer required")
-        while True:
-            try:
-                fail = int(input("Please enter your credits as fail:"))
-                if 120 >= fail >= 0 == fail % 20:
-                    break
-                else:
-                    print("Out of range")
-            except ValueError:
-                print("Integer required")
+        pAss = get_input("Please enter your credits as pass:")
+        defer = get_input("Please enter your credits as defer:")
+        fail = get_input("Please enter your credits as fail:")
+
         total = pAss + defer + fail
         variables = ((pAss, defer, fail),)
         if total >= 120 and pAss % 20 == 0 and defer % 20 == 0 and fail % 20 == 0 and \
@@ -103,6 +93,7 @@ while boolean:
             break
         else:
             print("Total incorrect")
+
     if fail >= 80:
         exclude = exclude + 1
         print("Exclude")
@@ -138,4 +129,4 @@ while boolean:
                 file = open('text.txt', 'r')
             boolean = False
         else:
-            print("Enter y or q!!!:")
+            print("Enter y or q!:")
