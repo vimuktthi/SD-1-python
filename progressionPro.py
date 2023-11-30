@@ -78,9 +78,21 @@ def get_input(fail_defer_pass):  # function for enter pass, defer and fail value
 
 
 boolean = True
+not_a_member_or_student = True
+# part 1
 print("Part 1")
 while boolean:
+    while not_a_member_or_student: # checking if user can jump into histogram,part 2 and part 3
+        student_or_staff = input("Are you a student or staff member")
+        if student_or_staff == "staff member":
+            not_a_member_or_student = False
+        elif student_or_staff == "student":
+            break
+        else:
+            print("Invalid.Enter 'staff member' or 'student'")
     while boolean:
+        if student_or_staff == "student":
+            boolean = False
         pAss = get_input("Please enter your credits as pass:")  # call the get_input and getting inputs
         defer = get_input("Please enter your credits as defer:")
         fail = get_input("Please enter your credits as fail:")
@@ -118,8 +130,10 @@ while boolean:
         if i == "y":
             break
         elif i == "q":
+            # part 2
             bargraph()
             print("part 2")
+            # part 3
             if os.path.exists(
                     "text.txt"):  # check this text file already execute or not , and delete the execute text file
                 os.remove("text.txt")
