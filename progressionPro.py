@@ -81,15 +81,16 @@ boolean = True
 not_a_member_or_student = True
 # part 1
 print("Part 1")
+print("Type 'staff member' or 'student'")
 while boolean:
-    while not_a_member_or_student: # checking if user can jump into histogram,part 2 and part 3
-        student_or_staff = input("Are you a student or staff member")
+    while not_a_member_or_student:  # checking if user can jump into histogram,part 2 and part 3
+        student_or_staff = input("Are you a student or staff member:")
         if student_or_staff == "staff member":
             not_a_member_or_student = False
         elif student_or_staff == "student":
             break
         else:
-            print("Invalid.Enter 'staff member' or 'student'")
+            print("*Invalid input,type 'staff member' or 'student'*")
     while boolean:
         if student_or_staff == "student":
             boolean = False
@@ -124,7 +125,7 @@ while boolean:
         print("Do not progress – module retriever")
         outcomes.extend(("Module retriever",))
 
-    while boolean:  # use varibale because in here using break function and False both to jump out the while loop
+    while boolean:  # use variable because in here using break function and False both to jump out the while loop
         print("Would you like to enter another set of data?")
         i = input("Enter 'y' for yes or 'q' to quit and view results:")
         if i == "y":
@@ -144,5 +145,7 @@ while boolean:
                 file.close()
                 file = open('text.txt', 'r')  # open the text file in 'read' mode
             boolean = False
+            if os.path.exists("text.txt"):
+                print("~Text file has created,Part 3 done~")
         else:
-            print("Enter y or q!:")
+            print("*Enter y or q*:")
