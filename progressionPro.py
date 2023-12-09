@@ -139,11 +139,13 @@ while boolean:
                     "text.txt"):  # check this text file already execute or not , and delete the execute text file
                 os.remove("text.txt")
             for i in range(len(outcomes)):
-                print(i + 1, ")", outcomes[i], " - ", values[i])  # display the outcome and its values
                 file = open('text.txt', 'a')  # create a text file and open in 'append' mode
                 file.write(f"{i + 1}) {outcomes[i]} - {values[i]}\n")  # write data sets
                 file.close()
                 file = open('text.txt', 'r')  # open the text file in 'read' mode
+                open_file=file.read()
+                file.close()
+                print(open_file)
             boolean = False
             if os.path.exists("text.txt"):
                 print("~Text file has created,Part 3 done~")
