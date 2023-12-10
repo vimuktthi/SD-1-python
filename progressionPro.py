@@ -143,9 +143,8 @@ while boolean:
                 file.write(f"{i + 1}) {outcomes[i]} - {values[i]}\n")  # write data sets
                 file.close()
                 file = open('text.txt', 'r')  # open the text file in 'read' mode
-                open_file=file.read()
-                file.close()
-                print(open_file)
+            for lines in file:
+                print(lines,end='')
             boolean = False
             if os.path.exists("text.txt"):
                 print("~Text file has created,Part 3 done~")
