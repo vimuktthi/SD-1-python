@@ -81,16 +81,20 @@ boolean = True
 not_a_member_or_student = True
 # part 1
 print("Part 1")
-print("Type 'staff member' or 'student'")
+print("Type '1',if you are a staff member")
+print("Type '2',if you are a student")
 while boolean:
     while not_a_member_or_student:  # checking if user can jump into histogram,part 2 and part 3
-        student_or_staff = input("Are you a student or staff member:")
-        if student_or_staff == "staff member":
-            not_a_member_or_student = False
-        elif student_or_staff == "student":
-            break
-        else:
-            print("*Invalid input,type 'staff member' or 'student'*")
+        try:
+            student_or_staff = int(input("Are you a student or staff member:"))
+            if student_or_staff == 1:
+                not_a_member_or_student = False
+            elif student_or_staff == 2:
+                break
+            else:
+                print("*Invalid input,type '1' or '2'*")
+        except ValueError:
+            print("Integer required(1 or 2)")
     while boolean:
         if student_or_staff == "student":
             boolean = False
