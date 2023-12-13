@@ -96,35 +96,36 @@ while boolean:
         except ValueError:
             print("Integer required(1 or 2)")
     while boolean:
-        if student_or_staff == "student":
+        if student_or_staff == 2:
             boolean = False
-        pAss = get_input("Please enter your credits as pass:")  # call the get_input and getting inputs
-        defer = get_input("Please enter your credits as defer:")
-        fail = get_input("Please enter your credits as fail:")
+        pass_credits = get_input("Please enter your credits as pass:")  # call the get_input and getting inputs
+        defer_credits = get_input("Please enter your credits as defer:")
+        fail_credits = get_input("Please enter your credits as fail:")
 
-        total = pAss + defer + fail
-        variables = ((pAss, defer, fail),)  # 3 entered data store as a tuple ,check them again for pass the bug
-        if total >= 120 and pAss % 20 == 0 and defer % 20 == 0 and fail % 20 == 0 and \
-                0 <= pAss <= 120 and 0 <= defer <= 120 and 0 <= fail <= 120:
+        total = pass_credits + defer_credits + fail_credits
+        variables = ((pass_credits, defer_credits, fail_credits),)  # 3 entered data store as a tuple ,check them
+        # again for pass the bug
+        if total >= 120 and pass_credits % 20 == 0 and defer_credits % 20 == 0 and fail_credits % 20 == 0 and \
+                0 <= pass_credits <= 120 and 0 <= defer_credits <= 120 and 0 <= fail_credits <= 120:
             values.extend(variables)  # save that tuple in the values list
         if total == 120:
             break
         else:
             print("Total incorrect")
 
-    if fail >= 80:  # check the entered values
+    if fail_credits >= 80:  # check the entered values
         exclude = exclude + 1  # store outcomes as  variables
         print("Exclude")
         outcomes.extend(("Exclude",))  # store outcomes as lists
-    elif pAss == 120:
+    elif pass_credits == 120:
         progress = progress + 1
         print("Progress")
-        outcomes.extend(("Progress",))
-    elif pAss == 100:
+        outcomes.extend(("Progress",))  # predict outcomes
+    elif pass_credits == 100:
         module_trailer = module_trailer + 1
         outcomes.extend(("Progress(Module trailer)",))
         print("Progress (module trailer)")
-    elif 60 <= pAss + defer <= 120:
+    elif 60 <= pass_credits + defer_credits <= 120:
         module_retriever = module_retriever + 1
         print("Do not progress – module retriever")
         outcomes.extend(("Module retriever",))
@@ -140,16 +141,16 @@ while boolean:
             print("part 2")
             # part 3
             if os.path.exists(
-                    "text.txt"):  # check this text file already execute or not , and delete the execute text file
+                    "text.txt"):  # check this text file is  already execute or not , and delete the execute text file
                 os.remove("text.txt")
             for i in range(len(outcomes)):
-                file = open('text.txt', 'a')  # create a text file and open in 'append' mode
-                file.write(f"{i + 1}) {outcomes[i]} - {values[i]}\n")  # write data sets
-                file.close()
-                file = open('text.txt', 'r')  # open the text file in 'read' mode
-            for lines in file:
-                print(lines,end='')
-            boolean = False
+                text_file = open('text.txt', 'a')  # create a text file and open in 'append' mode
+                text_file.write(f"{i + 1}) {outcomes[i]} - {values[i]}\n")  # write data sets
+                text_file.close()
+                text_file = open('text.txt', 'r')  # open the text file in 'read' mode
+            for lines in text_file:
+                print(lines, end='')
+            boolean = False  # display outcomes and their values, retrieved from text file
             if os.path.exists("text.txt"):
                 print("~Text file has created,Part 3 done~")
         else:
