@@ -127,7 +127,7 @@ while boolean:
         print("Progress (module trailer)")
     elif 60 <= pass_credits + defer_credits <= 120:
         module_retriever = module_retriever + 1
-        print("Do not progress – module retriever")
+        print("Module retriever")
         outcomes.extend(("Module retriever",))
 
     while boolean:  # use variable because in here using break function and False both to jump out the while loop
